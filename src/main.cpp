@@ -1,5 +1,5 @@
 #include <iostream>
-#include <ncurses>
+#include <curses.h>
 
 
 int main(int argc, char **argv) {
