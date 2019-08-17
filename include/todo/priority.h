@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cstdlib>
 
 /**
  * This class will manage the data structure of elements in the todolist.
@@ -15,17 +16,18 @@
 
 class Priority {
     public:
-        Priority(std::string name, int pri_level, Color color, std::string description);
-        Priority(std::string data);
-
         enum Color {RED, GREEN, YELLOW, ORANGE, BLUE};
+
+        Priority(std::string name, int pri_level, Color color, std::string description);
+        explicit Priority(std::string data);
+
         std::string get_raw();
 
     private:
+        const std::string delimiter = "<><><>";
         std::string name;
         int pri_level;
         Color color;
         std::string description;
         std::string raw;
-
 };
