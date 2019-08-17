@@ -16,5 +16,6 @@ class TodoList {
         void write_config();
         void read_config();
         std::map<int, Priority> priorities;
+        int buffer_size = 256;
 
 };

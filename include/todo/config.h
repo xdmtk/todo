@@ -10,6 +10,6 @@ class Config {
     public:
         static bool check_config();
         static std::string get_config_path();
-
+        static std::string conf_file;
 
 };

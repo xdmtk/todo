@@ -1,11 +1,10 @@
 #include <todo/priority.h>
 
+Priority::Priority() {
 
-// This constructor can take raw data from the config and build the request priority object
-Priority::Priority(std::string data) {
-    
-
-
+    // This is probably bad practice, but I need to be able to access the string
+    // constants defined by this class statically.
+    return;
 }
 
 
