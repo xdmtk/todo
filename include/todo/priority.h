@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include <iterator>
+#include <cassert>
 /**
  * This class will manage the data structure of elements in the todolist.
  * A TodoList will map out several Priority objects, with each priority object
