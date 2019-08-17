@@ -8,11 +8,13 @@ class TodoList {
     
     public:
         TodoList(bool);
+
     
 
     private: 
         void create_config();
+        void write_config();
         void read_config();
-        std::map<int, Priority> priorties;
+        std::map<int, Priority> priorities;
 
 };

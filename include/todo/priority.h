@@ -18,8 +18,10 @@
 class Priority {
     public:
         enum Color {RED, GREEN, YELLOW, ORANGE, BLUE};
+        const std::string delimiter = "<><><>";
+        const std::string begin_str = "><><><";
 
-        Priority(std::string name, int pri_level, Color color, std::vector<std::string> items);
+    Priority(std::string name, int pri_level, Color color, std::vector<std::string> items);
         explicit Priority(std::string data);
 
         std::string get_raw();
@@ -28,7 +30,6 @@ class Priority {
 
         void set_properties(std::string n, int l, Priority::Color c, std::vector<std::string> i,
                 std::string r);
-        const std::string delimiter = "<><><>";
         std::string name;
         int pri_level;
         Color color;
