@@ -1,9 +1,14 @@
-cmake_minimum_required (VERSION 2.8)
-project (Todo)
+cmake_minimum_required (VERSION 2.8) project (todo)
+
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})
+include_directories("../include")
 
-add_executable (Todo main.cpp)
-target_link_libraries(Todo ${CURSES_LIBRARIES})
+file(GLOB todo_src 
+    "*.cpp"
+)
+
+add_executable (todo ${todo_src})
+target_link_libraries(todo ${CURSES_LIBRARIES})
 
 
