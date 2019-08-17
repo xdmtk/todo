@@ -11,9 +11,13 @@ TodoList::TodoList(bool config_exists) {
 
 void TodoList::create_config() {
     std::fstream fs;
-    fs.open(Config::get_config_path() + "/todo.conf", std::fstream::out);
-    fs.write("hello", 6);
-    fs.close();
+    std::string sample_config = std::string("0.R.Urgent\nAdd things todo to the todo list!\n<><><>");
 
+    fs.open(Config::get_config_path() + "/todo.conf", std::fstream::out);
+    fs.write(sample_config.c_str(), sample_config.size());
+    fs.close();
+}
+
+void TodoList::read_config() {
 
 }
