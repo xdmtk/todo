@@ -16,7 +16,9 @@ void TodoList::create_config() {
     sample_items.emplace_back("Add items to your todo list!");
 
     Priority sample_priority = Priority("Urgent", 0, Priority::Color::RED, sample_items);
+
     this->priorities.insert({0, sample_priority});
+    this->write_config();
 }
 
 void TodoList::write_config() {
@@ -26,10 +28,7 @@ void TodoList::write_config() {
     for (auto it = this->priorities.begin(); it != this->priorities.end(); ++it) {
         fs.write(it->second.get_raw().c_str(), it->second.get_raw().size());
     }
-
     fs.close();
-
-
 }
 
 
