@@ -3,10 +3,10 @@ project (todo)
 
 find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})
-include_directories("../include")
+include_directories("include")
 
 file(GLOB todo_src 
-    "*.cpp"
+    "src/*.cpp"
 )
 
 add_executable (todo ${todo_src})

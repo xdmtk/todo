@@ -48,10 +48,10 @@ RM = /home/nick/JetBrains/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/nick/prog/todo/src
+CMAKE_SOURCE_DIR = /home/nick/prog/todo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/nick/prog/todo/src/cmake-build-debug
+CMAKE_BINARY_DIR = /home/nick/prog/todo/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/prog/todo/src/cmake-build-debug/CMakeFiles /home/nick/prog/todo/src/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/prog/todo/cmake-build-debug/CMakeFiles /home/nick/prog/todo/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/prog/todo/src/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nick/prog/todo/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,113 +123,113 @@ todo/fast:
 	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/build
 .PHONY : todo/fast
 
-config.o: config.cpp.o
+src/config.o: src/config.cpp.o
 
-.PHONY : config.o
-
-# target to build an object file
-config.cpp.o:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/config.cpp.o
-.PHONY : config.cpp.o
-
-config.i: config.cpp.i
-
-.PHONY : config.i
-
-# target to preprocess a source file
-config.cpp.i:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/config.cpp.i
-.PHONY : config.cpp.i
-
-config.s: config.cpp.s
-
-.PHONY : config.s
-
-# target to generate assembly for a file
-config.cpp.s:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/config.cpp.s
-.PHONY : config.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : src/config.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/config.cpp.o:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/config.cpp.o
+.PHONY : src/config.cpp.o
 
-main.i: main.cpp.i
+src/config.i: src/config.cpp.i
 
-.PHONY : main.i
+.PHONY : src/config.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/config.cpp.i:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/config.cpp.i
+.PHONY : src/config.cpp.i
 
-main.s: main.cpp.s
+src/config.s: src/config.cpp.s
 
-.PHONY : main.s
+.PHONY : src/config.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/config.cpp.s:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/config.cpp.s
+.PHONY : src/config.cpp.s
 
-priority.o: priority.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : priority.o
+.PHONY : src/main.o
 
 # target to build an object file
-priority.cpp.o:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/priority.cpp.o
-.PHONY : priority.cpp.o
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-priority.i: priority.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : priority.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-priority.cpp.i:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/priority.cpp.i
-.PHONY : priority.cpp.i
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-priority.s: priority.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : priority.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-priority.cpp.s:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/priority.cpp.s
-.PHONY : priority.cpp.s
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-todolist.o: todolist.cpp.o
+src/priority.o: src/priority.cpp.o
 
-.PHONY : todolist.o
+.PHONY : src/priority.o
 
 # target to build an object file
-todolist.cpp.o:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/todolist.cpp.o
-.PHONY : todolist.cpp.o
+src/priority.cpp.o:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/priority.cpp.o
+.PHONY : src/priority.cpp.o
 
-todolist.i: todolist.cpp.i
+src/priority.i: src/priority.cpp.i
 
-.PHONY : todolist.i
+.PHONY : src/priority.i
 
 # target to preprocess a source file
-todolist.cpp.i:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/todolist.cpp.i
-.PHONY : todolist.cpp.i
+src/priority.cpp.i:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/priority.cpp.i
+.PHONY : src/priority.cpp.i
 
-todolist.s: todolist.cpp.s
+src/priority.s: src/priority.cpp.s
 
-.PHONY : todolist.s
+.PHONY : src/priority.s
 
 # target to generate assembly for a file
-todolist.cpp.s:
-	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/todolist.cpp.s
-.PHONY : todolist.cpp.s
+src/priority.cpp.s:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/priority.cpp.s
+.PHONY : src/priority.cpp.s
+
+src/todolist.o: src/todolist.cpp.o
+
+.PHONY : src/todolist.o
+
+# target to build an object file
+src/todolist.cpp.o:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/todolist.cpp.o
+.PHONY : src/todolist.cpp.o
+
+src/todolist.i: src/todolist.cpp.i
+
+.PHONY : src/todolist.i
+
+# target to preprocess a source file
+src/todolist.cpp.i:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/todolist.cpp.i
+.PHONY : src/todolist.cpp.i
+
+src/todolist.s: src/todolist.cpp.s
+
+.PHONY : src/todolist.s
+
+# target to generate assembly for a file
+src/todolist.cpp.s:
+	$(MAKE) -f CMakeFiles/todo.dir/build.make CMakeFiles/todo.dir/src/todolist.cpp.s
+.PHONY : src/todolist.cpp.s
 
 # Help Target
 help:
@@ -240,18 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... todo"
 	@echo "... edit_cache"
-	@echo "... config.o"
-	@echo "... config.i"
-	@echo "... config.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... priority.o"
-	@echo "... priority.i"
-	@echo "... priority.s"
-	@echo "... todolist.o"
-	@echo "... todolist.i"
-	@echo "... todolist.s"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/priority.o"
+	@echo "... src/priority.i"
+	@echo "... src/priority.s"
+	@echo "... src/todolist.o"
+	@echo "... src/todolist.i"
+	@echo "... src/todolist.s"
 .PHONY : help
 
 

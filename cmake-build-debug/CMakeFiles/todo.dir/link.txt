@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -rdynamic CMakeFiles/todo.dir/src/config.cpp.o CMakeFiles/todo.dir/src/main.cpp.o CMakeFiles/todo.dir/src/priority.cpp.o CMakeFiles/todo.dir/src/todolist.cpp.o  -o todo -lcurses -lform 
