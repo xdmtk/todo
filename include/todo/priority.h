@@ -20,18 +20,19 @@ class Priority {
         enum Color {RED, GREEN, YELLOW, ORANGE, BLUE};
         const std::string delimiter = "<><><>";
         const std::string begin_str = "><><><";
-        int pri_level;
+        int pri_level{};
 
-    Priority(std::string name, int pri_level, Color color, std::vector<std::string> items);
-        explicit Priority(std::string data);
+        Priority(std::string name, int pri_level, Color color, std::vector<std::string> items);
+        Priority(std::vector<std::string> data);
         Priority();
-
         std::string get_raw();
 
     private:
 
+        void parse_header(std::string header);
         void set_properties(std::string n, int l, Priority::Color c, std::vector<std::string> i,
                 std::string r);
+        inline bool is_priority_header(std::vector<std::string>::iterator, std::vector<std::string>::iterator);
         std::string name;
         Color color;
         std::vector<std::string> items;

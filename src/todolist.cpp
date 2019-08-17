@@ -6,9 +6,13 @@
 
 TodoList::TodoList(bool config_exists) {
     Config::conf_file = "/todo.conf";
-    if (!config_exists) {
-        this->create_config();
+    if (config_exists) {
+        read_config();
     }
+    else {
+        create_config();
+    }
+
 }
 
 
@@ -19,15 +23,15 @@ void TodoList::create_config() {
 
     Priority sample_priority = Priority("Urgent", 0, Priority::Color::RED, sample_items);
 
-    this->priorities.insert({0, sample_priority});
-    this->write_config();
+    priorities.insert({0, sample_priority});
+    write_config();
 }
 
 void TodoList::write_config() {
 
     std::fstream fs;
     fs.open(Config::get_config_path() + Config::conf_file, std::fstream::out);
-    for (auto it = this->priorities.begin(); it != this->priorities.end(); ++it) {
+    for (auto it = priorities.begin(); it != priorities.end(); ++it) {
         fs.write(it->second.get_raw().c_str(), it->second.get_raw().size());
     }
     fs.close();
@@ -40,23 +44,25 @@ void TodoList::read_config() {
     std::ifstream fs;
     fs.open(Config::get_config_path() + Config::conf_file, std::ifstream::in);
 
-    std::string cur_line, priority_raw;
-    bool constructing = false;
+    std::string cur_line;
+    std::vector<std::string> priority_raw;
 
+
+    // Reads through the config file and constructs the raw string to pass to the
+    // Priority constructor to create a Priority object, which will then be appended
+    // to the TodoList priorities map
     while (std::getline(fs, cur_line, '\n')) {
+
+        priority_raw.emplace_back(cur_line + "\n");
         if (cur_line == static_mem.begin_str) {
-            priority_raw.append(cur_line + "\n");
-            constructing = true;
             continue;
         }
         else if (cur_line == static_mem.delimiter) {
-            priority_raw.append(cur_line + "\n");
-            constructing = false;
             auto completed_priority = Priority(priority_raw);
-            this->priorities.insert({completed_priority.pri_level, completed_priority});
+            priorities.insert({completed_priority.pri_level, completed_priority});
+            priority_raw.clear();
             continue;
         }
-        priority_raw.append(cur_line);
     }
 
 }

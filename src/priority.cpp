@@ -8,11 +8,28 @@ Priority::Priority() {
 }
 
 
+Priority::Priority(std::vector<std::string> data) {
+
+    for (auto it = data.begin(); it != data.end(); ++it){
+        if (*it == begin_str || *it == delimiter) {
+            continue;
+        }
+        else if (is_priority_header(it, data.begin()))
+            parse_header(*it);
+        }
+
+
+
+
+    }
+}
+
+
 // This constructor is meant to be called when internal usage wants to define a Priority object
 // to insert into the config. It will formulate the raw string data
 Priority::Priority(std::string name, int pri_level, Priority::Color color, std::vector<std::string> items) {
 
-    std::string raw_data = Priority::begin_str
+    std::string raw_data = begin_str
             + "\n"
             + std::to_string(pri_level)
             + "."
@@ -40,4 +57,15 @@ void Priority::set_properties(std::string n, int l, Priority::Color c, std::vect
 
 std::string Priority::get_raw() {
     return this->raw;
+}
+
+
+void parse_header(std::string header) {
+
+
+
+}
+
+inline bool is_priority_header(std::vector<std::string>::iterator a , std::vector<std::string>::iterator b) {
+    return (a - b == 1);
 }
