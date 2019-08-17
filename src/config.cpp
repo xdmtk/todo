@@ -1,4 +1,5 @@
 #include <todo/config.h>
+#include <todo/todolist.h>
 
 /**
  * Class to handle config file operations. 
@@ -9,12 +10,17 @@
 bool Config::check_config() {
     
     // Check whether config directory exists
-    struct stat info;
-    if (stat(Config::get_config_path().c_str(), &info) != 0) {
-        std::cout << "Cannot access path";
+    struct stat info{};
+    std::string config_dir_path = Config::get_config_path();
+
+    if (stat(config_dir_path.c_str(), &info) != 0) {
+        if (mkdir(config_dir_path.c_str(), 0777)) {
+            return true;
+        }
     }
 
 }
+
 
 // Get proposed config path for user
 std::string Config::get_config_path() {
@@ -22,3 +28,5 @@ std::string Config::get_config_path() {
         + getlogin() 
         + std::string("/.config/todo");
 }
+
+
