@@ -8,7 +8,7 @@
 class TodoList {
     
     public:
-        TodoList(bool);
+        explicit TodoList(bool);
 
     private: 
         void create_config();
