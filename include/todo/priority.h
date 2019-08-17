@@ -33,7 +33,6 @@ class Priority {
         void parse_header(std::string header);
         void set_properties(std::string n, int l, Priority::Color c, std::vector<std::string> i,
                 std::string r);
-        inline bool is_priority_header(std::vector<std::string>::iterator, std::vector<std::string>::iterator);
         std::string name;
         Color color;
         std::vector<std::string> items;

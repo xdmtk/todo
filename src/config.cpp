@@ -7,6 +7,10 @@
  */
 
 
+Config::Config() {
+
+}
+
 bool Config::check_config() {
     
     // Check whether config directory exists

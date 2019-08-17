@@ -5,7 +5,6 @@
 
 
 TodoList::TodoList(bool config_exists) {
-    Config::conf_file = "/todo.conf";
     if (config_exists) {
         read_config();
     }
@@ -27,10 +26,12 @@ void TodoList::create_config() {
     write_config();
 }
 
+
 void TodoList::write_config() {
 
     std::fstream fs;
-    fs.open(Config::get_config_path() + Config::conf_file, std::fstream::out);
+    Config c_static = Config();
+    fs.open(Config::get_config_path() + c_static.conf_file, std::fstream::out);
     for (auto it = priorities.begin(); it != priorities.end(); ++it) {
         fs.write(it->second.get_raw().c_str(), it->second.get_raw().size());
     }
@@ -42,7 +43,9 @@ void TodoList::read_config() {
 
     Priority static_mem;
     std::ifstream fs;
-    fs.open(Config::get_config_path() + Config::conf_file, std::ifstream::in);
+    Config c_static = Config();
+
+    fs.open(Config::get_config_path() + c_static.conf_file, std::ifstream::in);
 
     std::string cur_line;
     std::vector<std::string> priority_raw;

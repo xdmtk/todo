@@ -8,8 +8,9 @@
 class Config {
 
     public:
+        Config();
         static bool check_config();
         static std::string get_config_path();
-        static std::string conf_file;
+        const std::string conf_file = "/todo.conf";
 
 };

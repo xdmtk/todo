@@ -1,5 +1,8 @@
 #include <todo/priority.h>
 
+inline bool is_priority_header(std::vector<std::string>::iterator a , std::vector<std::string>::iterator b) {
+    return (a - b == 1);
+}
 
 Priority::Priority() {
     // This is probably bad practice, but I need to be able to access the string
@@ -63,35 +66,29 @@ void Priority::parse_header(std::string header) {
     int token_count = 0;
     std::string pri_level_str, name_str, color_str;
 
-    for (char & it : header) {
-
-        if (it == '.') {
+    for (auto it = header.begin(); it != header.end()-1; ++it) {
+        if (*it == '.') {
             token_count++;
             continue;
         }
-
         switch (token_count) {
             case 0:
-                pri_level_str.append(reinterpret_cast<const char *>(it));
+                pri_level_str += *it;
                 break;
             case 1:
-                color_str.append(reinterpret_cast<const char *>(it));
+                color_str += *it;
                 break;
             case 2:
-                name_str.append(reinterpret_cast<const char *>(it));
+                name_str += *it;
                 break;
             default:
                 assert(token_count < 3);
         }
-
-        this->pri_level = std::atoi(pri_level_str.c_str());
-        this->name = name_str;
-        this->color = static_cast<Color>(std::atoi(color_str.c_str()));
-
     }
+    this->pri_level = std::atoi(pri_level_str.c_str());
+    this->name = name_str;
+    this->color = static_cast<Color>(std::atoi(color_str.c_str()));
+
 }
 
 
-inline bool is_priority_header(std::vector<std::string>::iterator a , std::vector<std::string>::iterator b) {
-    return (a - b == 1);
-}
