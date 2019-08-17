@@ -1,3 +1,0 @@
-/home/nick/prog/todo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nick/prog/todo/cmake-build-debug/CMakeFiles/todo.dir
-/home/nick/prog/todo/cmake-build-debug/CMakeFiles/edit_cache.dir
