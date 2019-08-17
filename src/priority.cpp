@@ -14,6 +14,7 @@ Priority::Priority() {
 Priority::Priority(std::vector<std::string> data) {
 
     for (auto it = data.begin(); it != data.end(); ++it){
+        boost::algorithm::trim(*it);
         if (*it == begin_str || *it == delimiter) {
             continue;
         }
@@ -66,7 +67,7 @@ void Priority::parse_header(std::string header) {
     int token_count = 0;
     std::string pri_level_str, name_str, color_str;
 
-    for (auto it = header.begin(); it != header.end()-1; ++it) {
+    for (auto it = header.begin(); it != header.end(); ++it) {
         if (*it == '.') {
             token_count++;
             continue;
