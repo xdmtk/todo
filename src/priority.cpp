@@ -1,6 +1,7 @@
 #include <todo/priority.h>
 
 inline bool is_priority_header(std::vector<std::string>::iterator a , std::vector<std::string>::iterator b) {
+
     return (a - b == 1);
 }
 
@@ -50,6 +51,7 @@ Priority::Priority(std::string name, int pri_level, Priority::Color color, std::
 
 
 void Priority::set_properties(std::string n, int l, Priority::Color c, std::vector<std::string> i, std::string r) {
+
     this->raw = r;
     this->name = n;
     this->pri_level = l;
@@ -59,11 +61,13 @@ void Priority::set_properties(std::string n, int l, Priority::Color c, std::vect
 
 
 std::string Priority::get_raw() {
+
     return this->raw;
 }
 
 
 void Priority::parse_header(std::string header) {
+
     int token_count = 0;
     std::string pri_level_str, name_str, color_str;
 
@@ -92,8 +96,11 @@ void Priority::parse_header(std::string header) {
 
 }
 
-std::string Priority::get_color_code() {
+std::string Priority::get_color_code(bool closing) {
+
     std::string pretext = "\033[0;";
+    if (closing)
+        return pretext + "m";
     switch (this->color) {
         case Color::RED:
             return pretext + "31m";

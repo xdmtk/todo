@@ -29,7 +29,7 @@ class Priority {
         Priority();
 
         std::string get_raw();
-        std::string get_color_code();
+        std::string get_color_code(bool closing);
 
     private:
         friend class Printer;
