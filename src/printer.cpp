@@ -113,9 +113,11 @@ std::vector<std::string> Printer::tokenize_item(std::string i) {
 
 
 void Printer::print_help(bool invalid) {
+    auto p = Priority();
+    p.color = p.RED;
     std::string help_str = "";
     if (invalid)
-        help_str += "Invalid mode or option set\n\n";
+        print_color(p.get_color_code(false), "\nInvalid mode or option set\n", p.get_color_code(true));
     help_str += R"(
 
 ████████╗ ██████╗       ██████╗  ██████╗
@@ -147,8 +149,5 @@ void Printer::print_help(bool invalid) {
 
 
                   )";
-
-
-
-
+    std::cout << help_str << std::endl;
 }

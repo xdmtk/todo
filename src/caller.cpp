@@ -11,6 +11,10 @@ void Caller::call_function() {
         case Arguments::DEFAULT:
             printer->print_default();
             break;
+        case Arguments::HELP:
+        case Arguments::INVALID:
+            printer->print_help(arguments->mode == Arguments::INVALID);
+            break;
 
 
 
