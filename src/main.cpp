@@ -11,5 +11,7 @@ int main(int argc, char **argv) {
     auto p = Printer(&tl);
     auto c = Caller(&a, &p, &tl);
 
+    c.call_function();
+
 }
 

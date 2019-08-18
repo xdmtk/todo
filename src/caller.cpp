@@ -1,15 +1,18 @@
 #include <todo/caller.h>
 
 Caller::Caller(Arguments *a, Printer *p, TodoList *tl) {
-    switch (a->mode) {
+    arguments = a;
+    printer = p;
+    todolist = tl;
+}
+
+void Caller::call_function() {
+    switch (arguments->mode) {
         case Arguments::DEFAULT:
-            p->print_default();
+            printer->print_default();
             break;
 
 
 
     }
-
-
-
 }
