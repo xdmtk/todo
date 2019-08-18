@@ -66,14 +66,15 @@ void Printer::print_header(Priority * p) {
 
 void Printer::print_items(std::vector<std::string> *v) {
 
+    int index = 0;
     for (auto s : *v) {
-        std::cout << " * ";
-        int col_count = 3;
+        std::cout << " " << index++ << ") ";
+        int col_count = 3 + std::to_string(index).size();
         std::vector<std::string> tokens = tokenize_item(s);
         for (auto c : tokens) {
             if (col_count + c.size() > header_width) {
                 std::cout << std::endl << "   ";
-                col_count = 3;
+                col_count = 3 + std::to_string(index).size();
             }
             std::cout << c << " ";
             col_count += c.size() + 1;
