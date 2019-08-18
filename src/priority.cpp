@@ -13,8 +13,9 @@ Priority::Priority() {
 
 
 Priority::Priority(std::vector<std::string> data) {
-
+    std::string data_str;
     for (auto it = data.begin(); it != data.end(); ++it){
+        data_str += *it;
         boost::algorithm::trim(*it);
         if (*it == begin_str || *it == delimiter) {
             continue;
@@ -26,6 +27,7 @@ Priority::Priority(std::vector<std::string> data) {
             items.emplace_back(*it);
         }
     }
+    this->raw = data_str;
 }
 
 
@@ -45,7 +47,7 @@ Priority::Priority(std::string name, int pri_level, Priority::Color color, std::
     for (auto it = items.begin(); it != items.end(); ++it) {
         raw_data.append((*it) + "\n");
     }
-    raw_data.append(Priority::delimiter);
+    raw_data.append(Priority::delimiter + "\n");
     this->set_properties(name, pri_level, color, items, raw_data);
 }
 

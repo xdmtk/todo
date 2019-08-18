@@ -33,11 +33,17 @@ void TodoList::write_config() {
 
     std::fstream fs;
     Config c_static = Config();
-    fs.open(Config::get_config_path() + c_static.conf_file, std::fstream::out);
-    for (auto it = priorities.begin(); it != priorities.end(); ++it) {
-        fs.write(it->second.get_raw().c_str(), it->second.get_raw().size());
-    }
+    fs.open(Config::get_config_path() + c_static.conf_file, std::fstream::out | std::fstream::trunc);
     fs.close();
+    std::ofstream of;
+    std::string full_pri_data;
+    for (auto it = priorities.begin(); it != priorities.end(); ++it) {
+        full_pri_data += it->second.get_raw();
+    }
+    of.open(Config::get_config_path() + c_static.conf_file, std::ofstream::app | std::ofstream::out);
+    of << full_pri_data;
+    of.close();
+    read_config();
 }
 
 
@@ -51,7 +57,6 @@ void TodoList::read_config() {
 
     std::string cur_line;
     std::vector<std::string> priority_raw;
-
 
     // Reads through the config file and constructs the raw string to pass to the
     // Priority constructor to create a Priority object, which will then be appended
@@ -84,7 +89,7 @@ void TodoList::add_priority_list(Arguments *a, Printer *p) {
 
     try {
         pri_level = std::atoi(a->arguments[3].c_str());
-        pri_name = std::atoi(a->arguments[4].c_str());
+        pri_name = a->arguments[4].c_str();
         color_code = std::atoi(a->arguments[5].c_str());
         color = static_cast<Priority::Color>(color_code);
     }
