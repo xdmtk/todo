@@ -1,4 +1,7 @@
 #include <todo/printer.h>
+#include <todo/todolist.h>
+#include <todo/priority.h>
+
 
 Printer::Printer(TodoList *t) {
     this->target = t;

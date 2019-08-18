@@ -1,11 +1,14 @@
 #pragma once
-#include <todo/todolist.h>
 #include <iostream>
 
+
+class TodoList;
 class Printer {
     public:
-    private:
-        TodoList * target;
+        explicit Printer(TodoList * t);
         void print_default();
+
+private:
+    TodoList * target;
 
 };

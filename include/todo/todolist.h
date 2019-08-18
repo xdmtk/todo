@@ -2,9 +2,8 @@
 #include <fstream>
 #include <map>
 #include <todo/priority.h>
-#include<todo/printer.h>
 
-
+class Priority;
 class TodoList {
     
     public:
