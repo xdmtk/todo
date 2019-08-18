@@ -36,7 +36,7 @@ void Printer::print_default() {
 
 void Printer::print_header(Priority * p) {
 
-    int title_placement = int (header_width/2 - (p->name.size()/2));
+    int title_placement = int (header_width/2 - (p->name.size() + std::to_string(p->pri_level).size() + 3 /2));
 
     std::string color_code_open = p->get_color_code(false);
     std::string color_code_close = p->get_color_code(true);
@@ -46,11 +46,11 @@ void Printer::print_header(Priority * p) {
     }
     std::cout << std::endl;
     for (auto x : boost::irange(0, int(header_width + 1 - p->name.size()))) {
-        if (!x || x == header_width-p->name.size()) {
+        if (!x || x == header_width-(p->name.size() + std::to_string(p->pri_level).size() + 3)) {
             print_color(color_code_open, "!", color_code_close);
         }
         else if (x == title_placement) {
-            print_color(color_code_open, p->name, color_code_close);
+            print_color(color_code_open, p->name + " [" + std::to_string(p->pri_level) + "]", color_code_close);
         }
         else {
             std::cout << " ";
