@@ -20,7 +20,7 @@ void Printer::set_win_size() {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
     rows = w.ws_row ? w.ws_row : 150;
     columns = w.ws_col ? w.ws_col : 150;
-    header_width = (columns * .5);
+    header_width = int(columns * .5);
 }
 
 

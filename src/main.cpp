@@ -1,15 +1,15 @@
+#include <todo/args.h>
 #include <todo/config.h>
 #include <todo/todolist.h>
 #include <todo/printer.h>
+#include <todo/caller.h>
 
 int main(int argc, char **argv) {
 
-    TodoList tl = TodoList(Config::check_config());
-    if (argc < 2) {
-        Printer p = Printer(&tl);
-        p.print_default();
-        exit(0);
-    }
-
+    auto a = Arguments(argv, argc);
+    auto tl = TodoList(Config::check_config());
+    auto p = Printer(&tl);
+    auto c = Caller(&a, &p, &tl);
 
 }
+
