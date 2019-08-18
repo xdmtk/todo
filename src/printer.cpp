@@ -110,3 +110,45 @@ std::vector<std::string> Printer::tokenize_item(std::string i) {
 
     return tokens;
 }
+
+
+void Printer::print_help(bool invalid) {
+    std::string help_str = "";
+    if (invalid)
+        help_str += "Invalid mode or option set\n\n";
+    help_str += R"(
+
+████████╗ ██████╗       ██████╗  ██████╗
+╚══██╔══╝██╔═══██╗      ██╔══██╗██╔═══██╗
+   ██║   ██║   ██║█████╗██║  ██║██║   ██║
+   ██║   ██║   ██║╚════╝██║  ██║██║   ██║
+   ██║   ╚██████╔╝      ██████╔╝╚██████╔╝
+   ╚═╝    ╚═════╝       ╚═════╝  ╚═════╝
+---------------------------------------------
+  Nick Martinez - nick@xdmtk.org - 2019
+
+    Usage: todo [mode] [flags] [args]
+    To display this help page, use `todo -h`
+
+       Modes:
+         item         Add / edit / remove items from specified priority list
+         priority     Add / edit / remove priority lists
+
+       Item Flags:
+         -a <priority #> <item string>                      Add item to list <priority #> with message <item string>
+         -e <priority #> <item #> <item string (new)>       Edit item <item #> of list <priority #> with message <item string (new)>
+         -r <priority #> <item #>                           Remove item <item #> of list <priority #>
+
+       Priority Flags:
+         -a <priority #> <priority name>                    Add list with priority level <priority #> and name <priority name>
+         -e <priority #> <priority # (old)>                 Edit list of priority level <priority # (old> with new priority level
+            <priority # (new)> [priority name (new)]        <priority # (new)> and optionally modify name to [priority name (new)]
+         -r <priority #> <priority #>                       Remove list with priority level <priority #>
+
+
+                  )";
+
+
+
+
+}

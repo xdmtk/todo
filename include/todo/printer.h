@@ -8,6 +8,7 @@ class Printer {
     public:
         explicit Printer(TodoList * t);
         void print_default();
+        void print_help(bool invalid = false);
 
     private:
         TodoList * target;
