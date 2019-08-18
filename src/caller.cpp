@@ -15,6 +15,9 @@ void Caller::call_function() {
         case Arguments::INVALID:
             printer->print_help(arguments->mode == Arguments::INVALID);
             break;
+        case Arguments::ADD_PRIORITY:
+            todolist->add_priority_list(arguments, printer);
+            break;
 
 
 

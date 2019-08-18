@@ -1,7 +1,9 @@
 #include <todo/todolist.h>
 #include <todo/config.h>
 #include <todo/priority.h>
+#include <todo/printer.h>
 #include <iostream>
+#include <todo/args.h>
 
 
 TodoList::TodoList(bool config_exists) {
@@ -67,5 +69,29 @@ void TodoList::read_config() {
             continue;
         }
     }
+}
 
+void TodoList::add_priority_list(Arguments *a, Printer *p) {
+    if (a->arguments.size() != 6 ) {
+        p->print_help(true);
+        return;
+    }
+
+    int pri_level, color_code;
+    std::string pri_name;
+    Priority::Color color;
+    std::vector<std::string> items_vec;
+
+    try {
+        pri_level = std::atoi(a->arguments[3].c_str());
+        pri_name = std::atoi(a->arguments[4].c_str());
+        color_code = std::atoi(a->arguments[5].c_str());
+        color = static_cast<Priority::Color>(color_code);
+    }
+    catch (const std::exception& ){
+        p->print_help(true);
+        return;
+    }
+    priorities.insert({pri_level, Priority(pri_name, pri_level, color, items_vec)});
+    write_config();
 }

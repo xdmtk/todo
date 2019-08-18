@@ -4,10 +4,13 @@
 #include <todo/priority.h>
 
 class Priority;
+class Arguments;
+class Printer;
 class TodoList {
     
     public:
         explicit TodoList(bool);
+        void add_priority_list(Arguments *a, Printer *p);
 
     private: 
         void create_config();
