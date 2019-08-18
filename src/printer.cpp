@@ -18,8 +18,8 @@ void Printer::set_win_size() {
 
     struct winsize w{};
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-    rows = w.ws_row ? w.ws_row : 100;
-    columns = w.ws_col ? w.ws_col : 100;
+    rows = w.ws_row ? w.ws_row : 150;
+    columns = w.ws_col ? w.ws_col : 150;
     header_width = (columns * .5);
 }
 
@@ -78,6 +78,9 @@ void Printer::print_items(std::vector<std::string> *v) {
             std::cout << c << " ";
             col_count += c.size() + 1;
         }
+        std::cout << std::endl << std::endl;
+
+
     }
 
 }
@@ -101,5 +104,8 @@ std::vector<std::string> Printer::tokenize_item(std::string i) {
         }
         token += c;
     }
+    if (!token.empty())
+        tokens.emplace_back(token);
+
     return tokens;
 }
