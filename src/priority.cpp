@@ -92,4 +92,20 @@ void Priority::parse_header(std::string header) {
 
 }
 
+std::string Priority::get_color_code() {
+    std::string pretext = "\033[0;";
+    switch (this->color) {
+        case Color::RED:
+            return pretext + "31m";
+        case Color::BLUE:
+            return pretext + "34m";
+        case Color::GREEN:
+            return pretext + "32m";
+        case Color::MAGENTA:
+            return pretext + "35m";
+        case Color::YELLOW:
+            return pretext + "33m";
+    }
+}
+
 
