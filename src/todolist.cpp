@@ -96,8 +96,8 @@ void TodoList::add_priority_list(Arguments *a, Printer *p) {
                 a->arguments[3] + " already exists");
             exit(0);
         }
-        pri_name = a->arguments[4].c_str();
-        color_code = std::atoi(a->arguments[5].c_str());
+        pri_name = a->get_pri_name();
+        color_code = std::atoi(a->arguments[4].c_str());
         color = static_cast<Priority::Color>(color_code);
     }
     catch (const std::exception& ){

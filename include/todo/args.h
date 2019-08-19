@@ -30,6 +30,7 @@ class Arguments {
             REMOVE_PRIORITY, INVALID,
             ITEM, PRIORITY};
         Mode mode;
+        std::string get_pri_name();
 
 
     private:

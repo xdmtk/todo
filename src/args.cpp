@@ -67,3 +67,7 @@ void Arguments::set_mode() {
         return;
     }
 }
+
+std::string Arguments::get_pri_name() {
+    return arguments[5];
+}
