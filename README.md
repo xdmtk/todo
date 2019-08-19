@@ -1,5 +1,5 @@
 # todo
-
+![](https://xdmtk.org/images/todo.gif)
 
 [![GitHub issues](https://img.shields.io/github/issues/xdmtk/todo)](https://github.com/xdmtk/todo/issues)
 [![GitHub license](https://img.shields.io/github/license/xdmtk/todo)](https://github.com/xdmtk/todo/blob/master/LICENSE)
