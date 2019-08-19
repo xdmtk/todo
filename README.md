@@ -11,3 +11,16 @@
 
 Priorities are indexed from 0, with importance being sorted in descending order.  For each Priority list, individual to-do items can be added to each Priority, and removed when completed. 
 
+### Dependencies
+
+  For building and installation, `python3` is required to execute the installation script, and both `cmake` and `make` are used to generate the build. During runtime, `todo` uses a few functions from the C++ Boost libraries and ncurses. 
+
+  ##### Debian / Ubuntu:
+  `sudo apt install libboost-all-dev libncurses5-dev python3 cmake make`
+
+
+### Installation
+
+The install process has been simplified to a simple Python script. Run `install.py` with `python3` and the executable will be created and copied to the user's local `~/bin` directory. During the final stage of installation, the script will ask for `sudo` permissions to install the bash auto-completion script into `/etc/bash_completion.d`. 
+
+If this directory does not exist, the script will create it, but you will probably need to include a source directive for that directory in your `.bashrc`. 
