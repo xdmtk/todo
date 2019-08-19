@@ -76,6 +76,7 @@ void TodoList::read_config() {
     }
 }
 
+
 void TodoList::add_priority_list(Arguments *a, Printer *p) {
     if (a->arguments.size() != 6 ) {
         p->print_help(true);
@@ -136,38 +137,60 @@ void TodoList::remove_priority_list(Arguments *a, Printer *p) {
     p->print_success("Successfully removed priority list ");
 }
 
-/* TODO: Implement this later
- *
-void TodoList::edit_priority_list(Arguments *a, Printer *p) {
-    if (a->arguments.size() >= 6 ) {
+
+void TodoList::add_item(Arguments *a, Printer *p) {
+
+    if (a->arguments.size() != 5 ) {
         p->print_help(true);
         return;
     }
-
-    int pri_level, color_code;
-    std::string pri_name;
-    Priority::Color color;
-    std::vector<std::string> items_vec;
-
     try {
-
-        // Priority levels must be unique
-        pri_level = std::atoi(a->arguments[3].c_str());
+        int pri_level = std::atoi(a->arguments[3].c_str());
         if (!priorities.count(pri_level)) {
-            p->print_error("Priority level " + a->arguments[3] + " does not" +
-                " currently exist, you can create it with `todo add " + a->arguments[3] +
-                " <color code> <priority name>");
+            p->print_error("Priority level " + a->arguments[3] + " does not exist");
             exit(0);
         }
-        priorities[pri_level].name = a->arguments.size() > 6 ? a->arguments[6] : priorities[pri_level].name;
-        priorities[pri_level]
+        priorities[pri_level].items.emplace_back(a->arguments[4]);
+        write_config();
 
+        p->print_success("Successfully added items to Priority list: "
+                         + priorities[pri_level].name);
     }
     catch (const std::exception& ){
         p->print_help(true);
         return;
     }
-    priorities.insert({pri_level, Priority(pri_name, pri_level, color, items_vec)});
-    write_config();
 }
- */
+
+
+void TodoList::remove_item(Arguments *a, Printer *p) {
+
+    if (a->arguments.size() != 5 ) {
+        p->print_help(true);
+        return;
+    }
+
+    try {
+        int pri_level = std::atoi(a->arguments[3].c_str());
+        int item_num = std::atoi(a->arguments[4].c_str());
+        if (!priorities.count(pri_level)) {
+            p->print_error("Priority level " + a->arguments[3] + " does not exist");
+            exit(0);
+        }
+        if (item_num > priorities[pri_level].items.size()) {
+            p->print_error("Item number " + a->arguments[4] + " does not exist");
+            exit(0);
+        }
+        priorities[pri_level].items[item_num].erase();
+        write_config();
+
+        p->print_success("Successfully removed item #" + a->arguments[4] + " from Priority list: "
+                         + priorities[pri_level].name);
+    }
+    catch (const std::exception& ){
+        p->print_help(true);
+        return;
+    }
+
+
+}

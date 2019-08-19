@@ -64,6 +64,20 @@ void Priority::set_properties(std::string n, int l, Priority::Color c, std::vect
 
 std::string Priority::get_raw() {
 
+    std::string raw_data = begin_str
+                           + "\n"
+                           + std::to_string(pri_level)
+                           + "."
+                           + std::to_string(color)
+                           + "."
+                           + name
+                           + "\n";
+
+    for (auto it = items.begin(); it != items.end(); ++it) {
+        raw_data.append((*it) + "\n");
+    }
+    raw_data.append(Priority::delimiter + "\n");
+    this->raw = raw_data;
     return this->raw;
 }
 
