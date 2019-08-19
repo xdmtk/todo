@@ -20,12 +20,19 @@ if not os.path.isfile("CMakeLists.txt"):
     sys.exit(0)
 
 print("[+] Generating Makefile with CMake")
-os.mkdir("build")
+if not os.path.isdir("build"):
+    os.mkdir("build")
 os.chdir("build")
 ret = subprocess.call(['cmake', '..'])
 if ret != 0:
     print("[-] CMake build failed, check corresponding error message")
     sys.exit(0)
+ret = subprocess.call(['make'])
+if ret != 0:
+    print("[-] Make command failed, check corresponding error message")
+    sys.exit(0)
+
+
 if os.path.isfile("/home/" + os.getenv("USER") + "/bin/todo"):
     print("[-] Todo executable already exists in local bin folder. Halting installation..")
     sys.exit(0)
