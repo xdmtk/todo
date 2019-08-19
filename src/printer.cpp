@@ -129,12 +129,18 @@ void Printer::print_help(bool invalid) {
 ---------------------------------------------
   Nick Martinez - nick@xdmtk.org - 2019
 
-    Usage: todo [mode] [flags] [args]
-    To display this help page, use `todo -h`
+    Usage: todo [target] [mode] [flags] [args]
+
+
+    To display this help page, use `todo help`
+
+       Targets:
+         item         Targets individual todo items for a given priority list
+         priority     Targets the priority list
 
        Modes:
-         item         Add / edit / remove items from specified priority list
-         priority     Add / edit / remove priority lists
+          add
+          remove
 
        Colors:
           red
@@ -146,12 +152,12 @@ void Printer::print_help(bool invalid) {
 
 
        Item Flags:
-         -a <priority #> <item string>                      Add item to list <priority #> with message <item string>
-         -r <priority #> <item #>                           Remove item <item #> of list <priority #>
+         todo item add <priority #> <item string>                          Add item to list <priority #> with message <item string>
+         todo item remove <priority #> <item #>                            Remove item <item #> of list <priority #>
 
        Priority Flags:
-         -a <priority #> <color> <priority name>            Add list with priority level <priority #> and name <priority name>
-         -r <priority #> <priority #>                       Remove list with priority level <priority #>
+         todo priority add <priority #> <color> <priority name>            Add list with priority level <priority #> and name <priority name>
+         todo priority remove <priority #>                                 Remove list with priority level <priority #>
 
                   )";
     std::cout << help_str << std::endl;

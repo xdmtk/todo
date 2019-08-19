@@ -30,7 +30,7 @@ void Arguments::set_mode() {
                 mode = Arguments::ITEM;
             else if (argument == "priority")
                 mode = Arguments::PRIORITY;
-            else if (argument == "-h")
+            else if (argument == "help")
                 mode = Arguments::HELP;
             index++;
             continue;
@@ -40,21 +40,21 @@ void Arguments::set_mode() {
             case Arguments::INVALID:
                 return;
             case Arguments::ITEM:
-                if (argument == "-a")
+                if (argument == "add")
                     mode = Arguments::ADD_ITEM;
                 else if (argument == "-e")
                     mode = Arguments::EDIT_ITEM;
-                else if (argument == "-r")
+                else if (argument == "remove")
                     mode = Arguments::REMOVE_ITEM;
                 else
                     mode = Arguments::INVALID;
                 return;
             case Arguments::PRIORITY:
-                if (argument == "-a")
+                if (argument == "add")
                     mode = Arguments::ADD_PRIORITY;
                 else if (argument == "-e")
                     mode = Arguments::EDIT_PRIORITY;
-                else if (argument == "-r")
+                else if (argument == "remove")
                     mode = Arguments::REMOVE_PRIORITY;
                 else
                     mode = Arguments::INVALID;
