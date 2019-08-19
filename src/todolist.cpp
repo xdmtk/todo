@@ -98,8 +98,7 @@ void TodoList::add_priority_list(Arguments *a, Printer *p) {
             exit(0);
         }
         pri_name = a->get_pri_name();
-        color_code = std::atoi(a->arguments[4].c_str());
-        color = static_cast<Priority::Color>(color_code);
+        color = p->get_color_from_str(a->arguments[4].c_str());
     }
     catch (const std::exception& ){
         p->print_help(true);
@@ -177,15 +176,16 @@ void TodoList::remove_item(Arguments *a, Printer *p) {
             p->print_error("Priority level " + a->arguments[3] + " does not exist");
             exit(0);
         }
-        if (item_num > priorities[pri_level].items.size()) {
-            p->print_error("Item number " + a->arguments[4] + " does not exist");
+        if (item_num >= priorities[pri_level].items.size()) {
+            p->print_error("Item number " + a->arguments[4] + " does not exist in "
+                + "Priority list \"" + priorities[pri_level].name + "\"");
             exit(0);
         }
-        priorities[pri_level].items[item_num].erase();
+        priorities[pri_level].items.erase(priorities[pri_level].items.begin()+item_num);
         write_config();
 
-        p->print_success("Successfully removed item #" + a->arguments[4] + " from Priority list: "
-                         + priorities[pri_level].name);
+        p->print_success("Successfully removed item #" + a->arguments[4] + " from Priority list: \""
+                         + priorities[pri_level].name + "\"");
     }
     catch (const std::exception& ){
         p->print_help(true);

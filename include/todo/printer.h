@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "priority.h"
 
 
 class TodoList;
@@ -11,6 +12,7 @@ class Printer {
         void print_help(bool invalid = false);
         void print_success(std::string msg);
         void print_error(std::string err);
+        Priority::Color get_color_from_str(const std::string& color_arg);
 
     private:
         TodoList * target;

@@ -136,23 +136,20 @@ void Printer::print_help(bool invalid) {
          item         Add / edit / remove items from specified priority list
          priority     Add / edit / remove priority lists
 
-       Color Codes:
-          red         0
-          green       1
-          yellow      2
-          magenta     3
-          blue        4
+       Colors:
+          red
+          green
+          yellow
+          magenta
+          blue
 
 
        Item Flags:
          -a <priority #> <item string>                      Add item to list <priority #> with message <item string>
-         -e <priority #> <item #> <item string (new)>       Edit item <item #> of list <priority #> with message <item string (new)>
          -r <priority #> <item #>                           Remove item <item #> of list <priority #>
 
        Priority Flags:
-         -a <priority #> <color code> <priority name>       Add list with priority level <priority #> and name <priority name>
-         -e <priority #> <priority # (old)>                 Edit list of priority level <priority # (old> with new priority level
-            <priority # (new)> [priority name (new)]        <priority # (new)> and optionally modify name to [priority name (new)]
+         -a <priority #> <color> <priority name>            Add list with priority level <priority #> and name <priority name>
          -r <priority #> <priority #>                       Remove list with priority level <priority #>
 
                   )";
@@ -177,4 +174,20 @@ void Printer::print_success(std::string msg) {
     print_color(p.get_color_code(false), msg, p.get_color_code(true));
     std::cout << std::endl;
     std::cout << std::endl;
+}
+
+
+Priority::Color Printer::get_color_from_str(const std::string& color_arg) {
+    if (color_arg == "red")
+        return Priority::Color::RED;
+    if (color_arg == "blue")
+        return Priority::Color::BLUE;
+    if (color_arg == "green")
+        return Priority::Color::GREEN;
+    if (color_arg == "magenta")
+        return Priority::Color::MAGENTA;
+    if (color_arg == "yellow")
+        return Priority::Color::YELLOW;
+    print_error("Invalid color \"" + color_arg + "\" specified");
+    exit(0);
 }
