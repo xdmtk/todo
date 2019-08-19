@@ -1,7 +1,6 @@
 # todo
 
 
-![](https://xdmtk.org/images/todo-demo.gif)
 [![GitHub issues](https://img.shields.io/github/issues/xdmtk/todo)](https://github.com/xdmtk/todo/issues)
 [![GitHub license](https://img.shields.io/github/license/xdmtk/todo)](https://github.com/xdmtk/todo/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/xdmtk/todo)](https://github.com/xdmtk/todo/stargazers)
