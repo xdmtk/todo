@@ -16,7 +16,7 @@ Arguments::Arguments(char **args, int argc){
 
 void Arguments::set_mode() {
     short index = 0;
-    for (auto argument : arguments) {
+    for (const auto& argument : arguments) {
 
         if (!index) {
             index++;

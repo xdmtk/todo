@@ -88,7 +88,14 @@ void TodoList::add_priority_list(Arguments *a, Printer *p) {
     std::vector<std::string> items_vec;
 
     try {
+
+        // Priority levels must be unique
         pri_level = std::atoi(a->arguments[3].c_str());
+        if (priorities.count(pri_level)) {
+            p->print_error("Priority level must be unique! Priority " +
+                a->arguments[3] + " already exists");
+            exit(0);
+        }
         pri_name = a->arguments[4].c_str();
         color_code = std::atoi(a->arguments[5].c_str());
         color = static_cast<Priority::Color>(color_code);

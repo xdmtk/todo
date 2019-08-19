@@ -158,3 +158,11 @@ void Printer::print_help(bool invalid) {
                   )";
     std::cout << help_str << std::endl;
 }
+
+void Printer::print_error(std::string err) {
+
+    auto p = Priority();
+    p.color = p.RED;
+
+    print_color(p.get_color_code(false), err, p.get_color_code(true));
+}
