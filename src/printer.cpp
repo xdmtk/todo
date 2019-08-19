@@ -36,7 +36,7 @@ void Printer::print_default() {
 
 void Printer::print_header(Priority * p) {
 
-    int title_placement = int (header_width/2 - (p->name.size() + std::to_string(p->pri_level).size() + 3 /2));
+    int title_placement = int (header_width/2 - ((p->name.size() + std::to_string(p->pri_level).size() + 3 )/2));
 
     std::string color_code_open = p->get_color_code(false);
     std::string color_code_close = p->get_color_code(true);
