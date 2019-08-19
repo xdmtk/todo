@@ -25,6 +25,7 @@ os.chdir("build")
 ret = subprocess.call(['cmake', '..'])
 if ret != 0:
     print("[-] CMake build failed, check corresponding error message")
+    sys.exit(0)
 if os.path.isfile("/home/" + os.getenv("USER") + "/bin/todo"):
     print("[-] Todo executable already exists in local bin folder. Halting installation..")
     sys.exit(0)
