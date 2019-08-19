@@ -19,6 +19,11 @@ void Caller::call_function() {
             todolist->add_priority_list(arguments, printer);
             printer->print_default();
             break;
+        case Arguments::REMOVE_PRIORITY:
+            todolist->remove_priority_list(arguments, printer);
+            printer->print_default();
+            break;
+
 
 
 

@@ -33,7 +33,8 @@ class Priority {
 
     private:
         friend class Printer;
-        void parse_header(std::string header);
+        friend class TodoList;
+    void parse_header(std::string header);
         void set_properties(std::string n, int l, Priority::Color c, std::vector<std::string> i,
                 std::string r);
         std::string name;

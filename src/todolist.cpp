@@ -106,4 +106,68 @@ void TodoList::add_priority_list(Arguments *a, Printer *p) {
     }
     priorities.insert({pri_level, Priority(pri_name, pri_level, color, items_vec)});
     write_config();
+    p->print_success("Successfully added priority list ");
 }
+
+
+void TodoList::remove_priority_list(Arguments *a, Printer *p) {
+
+    if (a->arguments.size() != 4 ) {
+        p->print_help(true);
+        return;
+    }
+
+    try {
+
+        int pri_level, color_code;
+        // Priority levels must be unique
+        pri_level = std::atoi(a->arguments[3].c_str());
+        if (!priorities.count(pri_level)) {
+            p->print_error("Priority level " + a->arguments[3] + " does not exist");
+            exit(0);
+        }
+        priorities.erase(pri_level);
+    }
+    catch (const std::exception& ){
+        p->print_help(true);
+        return;
+    }
+    write_config();
+    p->print_success("Successfully removed priority list ");
+}
+
+/* TODO: Implement this later
+ *
+void TodoList::edit_priority_list(Arguments *a, Printer *p) {
+    if (a->arguments.size() >= 6 ) {
+        p->print_help(true);
+        return;
+    }
+
+    int pri_level, color_code;
+    std::string pri_name;
+    Priority::Color color;
+    std::vector<std::string> items_vec;
+
+    try {
+
+        // Priority levels must be unique
+        pri_level = std::atoi(a->arguments[3].c_str());
+        if (!priorities.count(pri_level)) {
+            p->print_error("Priority level " + a->arguments[3] + " does not" +
+                " currently exist, you can create it with `todo add " + a->arguments[3] +
+                " <color code> <priority name>");
+            exit(0);
+        }
+        priorities[pri_level].name = a->arguments.size() > 6 ? a->arguments[6] : priorities[pri_level].name;
+        priorities[pri_level]
+
+    }
+    catch (const std::exception& ){
+        p->print_help(true);
+        return;
+    }
+    priorities.insert({pri_level, Priority(pri_name, pri_level, color, items_vec)});
+    write_config();
+}
+ */

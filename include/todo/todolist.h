@@ -11,8 +11,10 @@ class TodoList {
     public:
         explicit TodoList(bool);
         void add_priority_list(Arguments *a, Printer *p);
+//        void edit_priority_list(Arguments *a, Printer *p);
+        void remove_priority_list(Arguments *a, Printer *p);
 
-    private: 
+private:
         void create_config();
         void write_config();
         void read_config();

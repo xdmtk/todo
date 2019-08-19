@@ -165,4 +165,16 @@ void Printer::print_error(std::string err) {
     p.color = p.RED;
 
     print_color(p.get_color_code(false), err, p.get_color_code(true));
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
+
+void Printer::print_success(std::string msg) {
+
+    auto p = Priority();
+    p.color = p.GREEN;
+
+    print_color(p.get_color_code(false), msg, p.get_color_code(true));
+    std::cout << std::endl;
+    std::cout << std::endl;
 }

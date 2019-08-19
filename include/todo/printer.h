@@ -9,6 +9,7 @@ class Printer {
         explicit Printer(TodoList * t);
         void print_default();
         void print_help(bool invalid = false);
+        void print_success(std::string msg);
         void print_error(std::string err);
 
     private:

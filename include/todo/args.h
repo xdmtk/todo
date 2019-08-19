@@ -9,11 +9,11 @@
  *  HELP -> -h
  *
  *  ADD_ITEM -> item -a <priority #> <item string>
- *  EDIT_ITEM -> item -e <priority #> <item #> <item string (new)>
+ *  ### TO BE IMPLEMENTED LATER - EDIT_ITEM -> item -e <priority #> <item #> <item string (new)>
  *  REMOVE_ITEM -> item -r <priority #> <item #>
  *
  *  ADD_PRIORITY -> priority -a <priority #> <priority name>
- *  EDIT_PRIORITY -> priority -e <priority # (old)>  <priority # (new)> [priority name (new)]
+ *  ### TO BE IMPLEMENTED LATER - EDIT_PRIORITY -> priority -e <priority # (old)>  <priority # (new)> [priority name (new)]
  *  REMOVE_PRIORITY -> priority -r <priority #>
  *
  */
