@@ -1,4 +1,6 @@
 #include <todo/args.h>
+#include <term.h>
+#include <unistd.h>
 
 Arguments::Arguments(char **args, int argc){
     std::vector<std::string> arg_vec;
@@ -13,8 +15,12 @@ Arguments::Arguments(char **args, int argc){
     arguments = arg_vec;
     set_mode();
 }
-
 void Arguments::set_mode() {
+    int result;
+    setupterm(NULL, STDOUT_FILENO, &result);
+    if (result > 0)
+        putp(tigetstr("clear"));
+
     short index = 0;
     for (const auto& argument : arguments) {
 
