@@ -30,7 +30,7 @@ void Arguments::set_mode() {
         }
 
         if (index == 1) {
-            if (argument != "item" && argument != "priority" && argument != "-h")
+            if (argument != "item" && argument != "priority" && argument != "help")
                 mode = Arguments::INVALID;
             else if (argument == "item")
                 mode = Arguments::ITEM;
