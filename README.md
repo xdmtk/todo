@@ -24,3 +24,42 @@ Priorities are indexed from 0, with importance being sorted in descending order.
 The install process has been simplified to a simple Python script. Run `install.py` with `python3` and the executable will be created and copied to the user's local `~/bin` directory. During the final stage of installation, the script will ask for `sudo` permissions to install the bash auto-completion script into `/etc/bash_completion.d`. 
 
 If this directory does not exist, the script will create it, but you will probably need to include a source directive for that directory in your `.bashrc`. 
+
+
+### Usage 
+```
+    Usage: todo [target] [mode] [flags] [args]
+```
+
+`todo` uses _Priority Lists_ and _Items_ to structure your todo list. First time usage will generate the default Priority "Urgent", with a default item. When calling `todo` with no arguments, the current todo list is displayed. To make changes to the todo list, you must specify a target and mode to operate on ( `item`, `priority` , `add`, `remove` )
+
+
+#### Adding/Removing Items
+To add an item to a particular priority list, find the priority number associated with the list _Urgent **[0]**_ And type 
+```
+todo item add 0 "Example item to be added to Priority List 0"
+```
+_Adds item to Priority list 0_
+
+
+
+Removal syntax requires the priority number and item number
+```
+todo item remove 0 0
+```
+_Removes item 0 from Priority List 0_
+
+
+#### Adding/Removing Priority Lists
+To add a Priority list, you must specify the priority level ( with 0 being highest priority, must be unique ), the color of the header ( `red`, `blue`, `green`, `cyan`, `magenta` ), and the name of the list
+```
+todo priority add 0 red "Urgent"
+```
+_Adds List with Priority 0, in color red with title "Urgent"_
+
+Removal will delete the List and all the items in it
+```
+todo priority remove 0
+```
+
+
