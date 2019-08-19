@@ -139,9 +139,10 @@ void Printer::print_help(bool invalid) {
        Colors:
           red
           green
-          yellow
+          cyan
           magenta
           blue
+          brown
 
 
        Item Flags:
@@ -186,8 +187,10 @@ Priority::Color Printer::get_color_from_str(const std::string& color_arg) {
         return Priority::Color::GREEN;
     if (color_arg == "magenta")
         return Priority::Color::MAGENTA;
-    if (color_arg == "yellow")
-        return Priority::Color::YELLOW;
+    if (color_arg == "cyan")
+        return Priority::Color::CYAN;
+    if (color_arg == "brown")
+        return Priority::Color::CYAN;
     print_error("Invalid color \"" + color_arg + "\" specified");
     exit(0);
 }

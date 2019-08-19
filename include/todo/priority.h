@@ -19,7 +19,7 @@
 
 class Priority {
     public:
-        enum Color {RED, GREEN, YELLOW, MAGENTA, BLUE};
+        enum Color {RED, GREEN, CYAN, MAGENTA, BLUE, BROWN};
         const std::string delimiter = "<><><>";
         const std::string begin_str = "><><><";
         int pri_level{};

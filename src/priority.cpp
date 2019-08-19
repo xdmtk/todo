@@ -126,7 +126,9 @@ std::string Priority::get_color_code(bool closing) {
             return pretext + "32m";
         case Color::MAGENTA:
             return pretext + "35m";
-        case Color::YELLOW:
+        case Color::CYAN:
+            return pretext + "36m";
+        case Color::BROWN:
             return pretext + "33m";
     }
 }
