@@ -25,7 +25,7 @@ class Arguments {
         std::vector<std::string> arguments;
         enum Mode {
             DEFAULT, HELP, ADD_ITEM,
-            EDIT_ITEM, REMOVE_ITEM,
+            MOVE_ITEM, REMOVE_ITEM,
             ADD_PRIORITY, EDIT_PRIORITY,
             REMOVE_PRIORITY, INVALID,
             ITEM, PRIORITY};

@@ -14,6 +14,7 @@ class TodoList {
         void remove_priority_list(Arguments *a, Printer *p);
         void add_item(Arguments *a, Printer *p);
         void remove_item(Arguments *a, Printer *p);
+        void move_item(Arguments *a, Printer *p);
 
 private:
         void create_config();

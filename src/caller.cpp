@@ -30,6 +30,11 @@ void Caller::call_function() {
         case Arguments::REMOVE_ITEM:
             todolist->remove_item(arguments, printer);
             printer->print_default();
+            break;
+        case Arguments::MOVE_ITEM:
+            todolist->move_item(arguments, printer);
+            printer->print_default();
+            break;
 
     }
 }

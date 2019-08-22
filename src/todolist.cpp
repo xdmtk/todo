@@ -194,3 +194,45 @@ void TodoList::remove_item(Arguments *a, Printer *p) {
 
 
 }
+
+
+
+
+void TodoList::move_item(Arguments *a, Printer *p) {
+
+    if (a->arguments.size() != 6 ) {
+        p->print_help(true);
+        return;
+    }
+
+    try {
+        int pri_level = std::atoi(a->arguments[3].c_str());
+        int item_num = std::atoi(a->arguments[4].c_str());
+        int pri_level_new = std::atoi(a->arguments[5].c_str());
+
+        if (!priorities.count(pri_level) || !priorities.count(pri_level_new)) {
+            p->print_error("One or more Priority levels do not exist ( " + a->arguments[3] + ", " + a->arguments[5]);
+            exit(0);
+        }
+        if (item_num >= priorities[pri_level].items.size()) {
+            p->print_error("Item number " + a->arguments[4] + " does not exist in "
+                           + "Priority list \"" + priorities[pri_level].name + "\"");
+            exit(0);
+        }
+        std::string item_moved = priorities[pri_level].items[item_num];
+        priorities[pri_level].items.erase(priorities[pri_level].items.begin()+item_num);
+        priorities[pri_level_new].items.emplace_back(item_moved);
+        write_config();
+
+        p->print_success("Successfully moved item #" + a->arguments[4] + " from Priority list: \""
+                         + priorities[pri_level].name + "\" to Priority list: \"" + priorities[pri_level_new].name +
+                         "\"");
+    }
+    catch (const std::exception& ){
+        p->print_help(true);
+        return;
+    }
+
+
+}
+

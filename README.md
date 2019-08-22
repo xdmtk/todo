@@ -33,7 +33,7 @@ If this directory does not exist, the script will create it, but you will probab
 `todo` uses _Priority Lists_ and _Items_ to structure your todo list. First time usage will generate the default Priority "Urgent", with a default item. When calling `todo` with no arguments, the current todo list is displayed. To make changes to the todo list, you must specify a target and mode to operate on ( `item`, `priority` , `add`, `remove` )
 
 
-#### Adding/Removing Items
+#### Adding/Moving/Removing Items
 To add an item to a particular priority list, find the priority number associated with the list _Urgent **[0]**_ And type 
 ```
 todo item add 0 "Example item to be added to Priority List 0"
@@ -41,12 +41,19 @@ todo item add 0 "Example item to be added to Priority List 0"
 _Adds item to Priority list 0_
 
 
-
 Removal syntax requires the priority number and item number
 ```
 todo item remove 0 0
 ```
 _Removes item 0 from Priority List 0_
+
+
+Similar to removing an item, the `move` mode requires specifying the Priority list and item number, and additionally the # of the Priorty list
+to move the item to
+```
+todo item move 0 0 3
+```
+_Moves item 0 from Priority List 0 to Priority List 3_
 
 
 #### Adding/Removing Priority Lists

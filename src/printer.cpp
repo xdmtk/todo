@@ -154,6 +154,7 @@ void Printer::print_help(bool invalid) {
        Item Flags:
          todo item add <priority #> <item string>                          Add item to list <priority #> with message <item string>
          todo item remove <priority #> <item #>                            Remove item <item #> of list <priority #>
+         todo item move <priority # old> <item #> <priority # new>         Move item <item #> of list <proririty # old> to list <priority # new>
 
        Priority Flags:
          todo priority add <priority #> <color> <priority name>            Add list with priority level <priority #> and name <priority name>

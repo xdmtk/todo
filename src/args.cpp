@@ -48,8 +48,8 @@ void Arguments::set_mode() {
             case Arguments::ITEM:
                 if (argument == "add")
                     mode = Arguments::ADD_ITEM;
-                else if (argument == "-e")
-                    mode = Arguments::EDIT_ITEM;
+                else if (argument == "move")
+                    mode = Arguments::MOVE_ITEM;
                 else if (argument == "remove")
                     mode = Arguments::REMOVE_ITEM;
                 else
@@ -58,8 +58,6 @@ void Arguments::set_mode() {
             case Arguments::PRIORITY:
                 if (argument == "add")
                     mode = Arguments::ADD_PRIORITY;
-                else if (argument == "-e")
-                    mode = Arguments::EDIT_PRIORITY;
                 else if (argument == "remove")
                     mode = Arguments::REMOVE_PRIORITY;
                 else
