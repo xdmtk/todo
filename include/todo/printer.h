@@ -19,10 +19,9 @@ class Printer {
         void print_header(Priority * p);
         void print_items(std::vector<std::string> * v);
         void set_win_size();
+        void print_last_updated();
         void print_color(const std::string& open, std::string ch, const std::string& close);
         std::vector<std::string> tokenize_item(std::string i);
 
         int rows, columns, header_width;
-
-
 };

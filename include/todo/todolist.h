@@ -15,12 +15,14 @@ class TodoList {
         void add_item(Arguments *a, Printer *p);
         void remove_item(Arguments *a, Printer *p);
         void move_item(Arguments *a, Printer *p);
+        std::string get_last_accessed();
 
 private:
         void create_config();
         void write_config();
         void read_config();
         std::map<int, Priority, std::less<>> priorities;
+        std::string last_accessed_date;
 
         friend class Printer;
 

@@ -17,19 +17,39 @@ Printer::Printer(TodoList *t) {
 void Printer::set_win_size() {
 
     struct winsize w{};
-    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
-    rows = w.ws_row ? w.ws_row : 150;
-    columns = w.ws_col ? w.ws_col : 150;
-    header_width = int(columns * .5);
+    try {
+        ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+        rows = w.ws_row ? w.ws_row : 150;
+        columns = w.ws_col ? w.ws_col : 150;
+        header_width = int(columns * .5);
+    }
+    catch (std::exception &ex){
+        rows = 150;
+        columns = 150;
+        header_width = int(columns * .5);
+    }
 }
 
 
 void Printer::print_default() {
 
     set_win_size();
+    print_last_updated();
     for (auto & it : target->priorities) {
         print_header(&it.second);
         print_items(&it.second.items);
+    }
+}
+
+void Printer::print_last_updated() {
+    std::string last_accessed;
+    try {
+        if (!(last_accessed = this->target->get_last_accessed()).empty()) {
+            std::cout << "Last Modified: " << last_accessed << std::endl << std::endl;
+        }
+    }
+    catch (std::exception &e) {
+
     }
 }
 
@@ -139,16 +159,10 @@ void Printer::print_help(bool invalid) {
          priority     Targets the priority list
 
        Modes:
-          add
-          remove
+          add   move    remove
 
        Colors:
-          red
-          green
-          cyan
-          magenta
-          blue
-          brown
+          red   green   cyan    magenta     blue    brown
 
 
        Item Flags:

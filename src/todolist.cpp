@@ -4,6 +4,15 @@
 #include <todo/printer.h>
 #include <iostream>
 #include <todo/args.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#ifndef WIN32
+#include <unistd.h>
+#endif
+
+#ifdef WIN32
+#define stat _stat
+#endif
 
 
 TodoList::TodoList(bool config_exists) {
@@ -44,6 +53,21 @@ void TodoList::write_config() {
     of << full_pri_data;
     of.close();
     read_config();
+}
+
+std::string TodoList::get_last_accessed() {
+    auto fp = Config::get_config_path() + Config().conf_file;
+    struct stat res;
+    struct tm localtime;
+    if (stat(fp.c_str(), &res)==0) {
+        localtime_r(&res.st_mtime, &localtime);
+        char timbuf[80];
+        strftime(timbuf, sizeof(timbuf), "%c", &localtime);
+        return std::string(timbuf);
+    }
+    else {
+        return "";
+    }
 }
 
 
