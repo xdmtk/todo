@@ -1,5 +1,6 @@
 #include <vector>
 #include <todo/printer.h>
+#include <todo/config.h>
 #include <todo/todolist.h>
 #include <todo/priority.h>
 #include <sys/ioctl.h>
@@ -7,8 +8,8 @@
 
 
 
-Printer::Printer(TodoList *t) {
-
+Printer::Printer(TodoList *t, Config *c) {
+    this->config = c;
     this->target = t;
     set_win_size();
 }
@@ -109,7 +110,12 @@ void Printer::print_items(std::vector<std::string> *v) {
 
 void Printer::print_color(const std::string& open, std::string ch, const std::string& close) {
 
-    std::cout << open << ch << close;
+    if (config->colors_enabled) {
+        std::cout << open << ch << close;
+    }
+    else {
+        std::cout << ch ;
+    }
 }
 
 
@@ -151,6 +157,7 @@ void Printer::print_help(bool invalid) {
 
     Usage: todo [target] [mode] [flags] [args]
 
+    * Configuration settings are located at ~/.config/todo/config *
 
     To display this help page, use `todo help`
 
@@ -163,7 +170,6 @@ void Printer::print_help(bool invalid) {
 
        Colors:
           red   green   cyan    magenta     blue    brown
-
 
        Item Flags:
          todo item add <priority #> <item string>                          Add item to list <priority #> with message <item string>

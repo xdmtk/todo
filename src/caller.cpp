@@ -1,6 +1,7 @@
 #include <todo/caller.h>
+#include <todo/config.h>
 
-Caller::Caller(Arguments *a, Printer *p, TodoList *tl) {
+Caller::Caller(Arguments *a, Printer *p, TodoList *tl, Config *c) {
     arguments = a;
     printer = p;
     todolist = tl;

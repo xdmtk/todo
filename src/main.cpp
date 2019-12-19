@@ -8,17 +8,18 @@ int main(int argc, char **argv) {
 
     // Collect and parse arguments
     auto a = Arguments(argv, argc);
+    auto c = Config();
 
     // Parse TodoList data from config
-    auto tl = TodoList(Config::check_config());
+    auto tl = TodoList(c.check_todo_data(), &c);
 
     // Setup Printer object to display TodoList data
-    auto p = Printer(&tl);
+    auto p = Printer(&tl, &c);
 
     // Setup Caller object to direct control flow based
     // on given arguments
-    auto c = Caller(&a, &p, &tl);
+    auto ca = Caller(&a, &p, &tl, &c);
 
-    c.call_function();
+    ca.call_function();
 }
 

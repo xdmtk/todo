@@ -15,18 +15,19 @@
 #endif
 
 
-TodoList::TodoList(bool config_exists) {
-    if (config_exists) {
-        read_config();
+TodoList::TodoList(bool todo_list_exists, Config *c) {
+    this->config = c;
+    if (todo_list_exists) {
+        read_todo_list();
     }
     else {
-        create_config();
+        create_todo_list();
     }
 
 }
 
 
-void TodoList::create_config() {
+void TodoList::create_todo_list() {
 
     std::vector<std::string> sample_items;
     sample_items.emplace_back("Add items to your todo list!");
@@ -42,21 +43,21 @@ void TodoList::write_config() {
 
     std::fstream fs;
     Config c_static = Config();
-    fs.open(Config::get_config_path() + c_static.conf_file, std::fstream::out | std::fstream::trunc);
+    fs.open(config->get_todo_path() + c_static.todo_file, std::fstream::out | std::fstream::trunc);
     fs.close();
     std::ofstream of;
     std::string full_pri_data;
     for (auto it = priorities.begin(); it != priorities.end(); ++it) {
         full_pri_data += it->second.get_raw();
     }
-    of.open(Config::get_config_path() + c_static.conf_file, std::ofstream::app | std::ofstream::out);
+    of.open(config->get_todo_path() + c_static.todo_file, std::ofstream::app | std::ofstream::out);
     of << full_pri_data;
     of.close();
-    read_config();
+    read_todo_list();
 }
 
 std::string TodoList::get_last_accessed() {
-    auto fp = Config::get_config_path() + Config().conf_file;
+    auto fp = config->get_todo_path() + config->todo_file;
     struct stat res;
     struct tm localtime;
     if (stat(fp.c_str(), &res)==0) {
@@ -71,13 +72,13 @@ std::string TodoList::get_last_accessed() {
 }
 
 
-void TodoList::read_config() {
+void TodoList::read_todo_list() {
 
     Priority static_mem;
     std::ifstream fs;
     Config c_static = Config();
 
-    fs.open(Config::get_config_path() + c_static.conf_file, std::ifstream::in);
+    fs.open(config->get_todo_path() + c_static.todo_file, std::ifstream::in);
 
     std::string cur_line;
     std::vector<std::string> priority_raw;
