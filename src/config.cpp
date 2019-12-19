@@ -39,7 +39,7 @@ void Config::handle_config_options(std::string option, std::string val) {
         this->colors_enabled = (val == "yes" ? true : false);
         return;
     }
-    if (option == "column_width") {
+    if (option == "header_width") {
         int cw = std::strtol(val.c_str(), NULL, 10);
         if (cw >= 25 && cw <= 100) {
             this->column_width_percent = cw;

@@ -22,7 +22,7 @@ void Printer::set_win_size() {
         ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
         rows = w.ws_row ? w.ws_row : 150;
         columns = w.ws_col ? w.ws_col : 150;
-        header_width = int(columns * .5);
+        header_width = int(columns * (config->column_width_percent ? (float)(config->column_width_percent/100.0): .5) );
     }
     catch (std::exception &ex){
         rows = 150;
